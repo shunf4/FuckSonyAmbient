@@ -105,6 +105,13 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/apply_now"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="applyNow"
+            android:text="@string/apply_now" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

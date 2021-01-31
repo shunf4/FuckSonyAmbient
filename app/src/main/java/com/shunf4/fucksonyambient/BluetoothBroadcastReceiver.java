@@ -65,8 +65,10 @@ public final class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 int volume = sharedPreferences.getInt(MainActivity.KEY_VOLUME, 0);
                 boolean voice = sharedPreferences.getBoolean(MainActivity.KEY_VOICE_OPTIMIZED, false);
 
-                execute(context, device, mode, volume, voice);
-
+                final Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(() -> {
+                    execute(context, device, mode, volume, voice);
+                }, 1000);
             }
         }
 
@@ -92,33 +94,25 @@ public final class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 noiseCancelling = 0;
         }
 
-        final Handler handler = new Handler(Looper.getMainLooper());
-        boolean finalEnabled = enabled;
-        int finalNoiseCancelling = noiseCancelling;
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (setAmbientSound(context, device, finalEnabled, finalNoiseCancelling, volume, voice)) {
-                        Toast.makeText(context, context.getString(R.string.set_ambient_successful) + context.getString(MainActivity.MODE_STRINGS[mode])
-                                        + (mode == 3 ?
-                                        ("; " + context.getString(R.string.volume) + volume +
-                                                (voice ? ("; " + context.getString(R.string.voice_optimized) ) : "")
-                                        ) : "")
-                                , Toast.LENGTH_SHORT).show();
-                    } else {
-                        final String message = context.getString(R.string.headset_not_found);
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    final String message = context.getString(R.string.io_error);
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        try {
+            if (setAmbientSound(context, device, enabled, noiseCancelling, volume, voice)) {
+                Toast.makeText(context, context.getString(R.string.set_ambient_successful) + context.getString(MainActivity.MODE_STRINGS[mode])
+                                + (mode == 3 ?
+                                ("; " + context.getString(R.string.volume) + volume +
+                                        (voice ? ("; " + context.getString(R.string.voice_optimized) ) : "")
+                                ) : "")
+                        , Toast.LENGTH_SHORT).show();
+            } else {
+                final String message = context.getString(R.string.headset_not_found);
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
             }
-        }, 1000);
+        } catch (IOException e) {
+            e.printStackTrace();
+            final String message = context.getString(R.string.io_error);
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     static boolean setAmbientSound(Context context, BluetoothDevice device, boolean enabled, int noiseCancelling, int volume, boolean voice) throws IOException, InterruptedException {

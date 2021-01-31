@@ -3,16 +3,19 @@ package com.shunf4.fucksonyambient;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -121,6 +124,28 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Comp
         ambientSound.setOnCheckedChangeListener(this);
         volume.setOnSeekBarChangeListener(this);
         voiceOptimized.setOnCheckedChangeListener(this);
+    }
+
+    public void applyNow(View view) {
+        byte[] macAddress = parseMacAddressString(listeningMac.getText());
+        if (macAddress == null) {
+            Toast.makeText(this, R.string.error_mac_address, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        BluetoothAdapter ba = BluetoothAdapter.getDefaultAdapter();
+        BluetoothDevice bd =  ba.getRemoteDevice(macAddress);
+
+        if (bd != null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+            BluetoothBroadcastReceiver.execute(this, bd,
+                    sharedPreferences.getInt(KEY_AMBIENT_MODE, 0),
+                    sharedPreferences.getInt(KEY_VOLUME, 0),
+                    sharedPreferences.getBoolean(KEY_VOICE_OPTIMIZED, false)
+            );
+        } else {
+            Toast.makeText(this, R.string.headset_not_found, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveSettings() {

@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">FuckSonyAmbient</string>
+    <string name="bt_status_default_text">Bluetooth visibility(discoverability) status will be shown here</string>
+    <string name="set_always_visible_text">Set bluetooth always discoverable</string>
+    <string name="refresh_status_text">Refresh status</string>
+
+    <string name="state_off">Bluetooth off</string>
+    <string name="state_turning_on">Bluetooth turning on</string>
+    <string name="state_on">Bluetooth on</string>
+    <string name="state_turning_off">Bluetooth turning off</string>
+    <string name="scan_mode_none">Bluetooth scan mode unavailable</string>
+    <string name="scan_mode_connectable">Bluetooth connectable: device can be seen by previously connected devices</string>
+    <string name="scan_mode_connectable_discoverable">Bluetooth connectable and discoverable: device can be seen by all surrounding devices</string>
+    <string name="set_always_visible_normal_way_text">Set bluetooth Always Discoverable (Normal Way)</string>
+    <string name="set_always_visible_normal_way_300s_text" >Set bluetooth Always Discoverable (Normal Way, 300s)</string>
+    <string name="hint_input_mac_address_to_ping">MAC address</string>
+    <string name="start_ping">Start Ping</string>
+    <string name="error_mac_address">You entered bad MAC address</string>
+    <string name="bluetooth_ping_start_success">Ping started successfully</string>
+    <string name="bluetooth_ping_start_failure">Ping started failed</string>
+    <string name="please_wait_for_ping_result">Please wait…</string>
+    <string name="ping_result_uuids">UUIDs: %1$s</string>
+    <string name="ping_result_no_uuid">No UUID received</string>
+    <string name="start_ping_job">Start Ping Job</string>
+    <string name="end_all_ping_jobs">End All Ping Jobs</string>
+    <string name="start_ping_job_success">Started Ping job hopefully</string>
+    <string name="end_ping_jobs_success">Ended Ping jobs hopefully</string>
+    <string name="hint_list_jobs">"Current jobs: "</string>
+    <string name="query_ping_jobs">Query Current Ping Jobs</string>
+    <string name="bt_broadcast_receiver_name">BluetoothBroadcastReceiver</string>
+    <string name="hint_input_mac_address_to_listen">Listening MAC</string>
+    <string name="noti_job_executing">Consistently Pinging Bluetooth Device</string>
+    <string name="noti_job_executing_desc">Pinging %s</string>
+    <string name="noti_channel_name">Pinging Bluetooth Device</string>
+    <string name="noti_channel_desc">Shows when you starts a job pinging a bluetooth device every a few seconds</string>
+    <string name="noti_action_stop">Stop</string>
+
+    <string name="disable_ambient_sound_control">Disable ambient sound control</string>
+    <string name="enable_noise_cancelling">Enable noise cancelling</string>
+    <string name="enable_wind_cancelling">Enable wind cancelling</string>
+    <string name="ambient_sound">Ambient sound</string>
+    <string name="volume">Volume: </string>
+    <string name="voice_optimized">Voice optimized</string>
+
+    <string name="io_error">IO error (Another application using a headset? Is it connected?)</string>
+    <string name="headset_not_found">Sony Headset is not found</string>
+    <string name="set_ambient_successful">"Ambient Control: "</string>
+
+</resources>

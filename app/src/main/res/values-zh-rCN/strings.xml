@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FuckSonyAmbient</string>
+    <string name="bt_status_default_text">蓝牙可见性信息将在这里显示</string>
+    <string name="set_always_visible_text">设置蓝牙总是可见</string>
+    <string name="refresh_status_text">刷新蓝牙状态</string>
+    <string name="state_off">蓝牙已关闭</string>
+    <string name="state_turning_on">蓝牙正在打开</string>
+    <string name="state_on">蓝牙已打开</string>
+    <string name="state_turning_off">蓝牙正在关闭</string>
+    <string name="scan_mode_none">蓝牙扫描模式不可用</string>
+    <string name="scan_mode_connectable">蓝牙可连接：本设备可被已经连接过的设备发现</string>
+    <string name="scan_mode_connectable_discoverable">蓝牙可连接可被发现：本设备可被所有附近设备发现</string>
+    <string name="set_always_visible_normal_way_text">设置蓝牙总是可见（正常模式）</string>
+    <string name="set_always_visible_normal_way_300s_text" >设置蓝牙总是可见（正常模式，300 秒）</string>
+    <string name="hint_input_mac_address_to_ping">MAC 地址</string>
+    <string name="start_ping">开始 Ping</string>
+    <string name="error_mac_address">你输入了错误的 MAC 地址</string>
+    <string name="bluetooth_ping_start_success">Ping 成功启动</string>
+    <string name="bluetooth_ping_start_failure">Ping 启动失败</string>
+    <string name="please_wait_for_ping_result">请等待…</string>
+    <string name="ping_result_uuids">UUID：%1$s</string>
+    <string name="ping_result_no_uuid">未接收到 UUID</string>
+    <string name="start_ping_job">开始 Ping 任务</string>
+    <string name="end_all_ping_jobs">结束所有 Ping 任务</string>
+    <string name="start_ping_job_success">开始了 Ping 任务（如果一切顺利的话）</string>
+    <string name="end_ping_jobs_success">结束了所有 Ping 任务（如果一切顺利的话）</string>
+    <string name="hint_list_jobs">当前任务：</string>
+    <string name="query_ping_jobs">查询当前已有的 Ping 任务</string>
+    <string name="bt_broadcast_receiver_name">BluetoothBroadcastReceiver</string>
+    <string name="hint_input_mac_address_to_listen">监听 MAC</string>
+    <string name="noti_job_executing">正在持续 Ping 蓝牙设备</string>
+    <string name="noti_job_executing_desc">正在 Ping %s</string>
+    <string name="noti_channel_name">正在 Ping 蓝牙设备</string>
+    <string name="noti_channel_desc">当开始一个每隔几秒就 Ping 某蓝牙设备的任务时就会出现</string>
+    <string name="noti_action_stop">停止</string>
+    <string name="disable_ambient_sound_control">关闭环境声音控制</string>
+    <string name="enable_noise_cancelling">启用噪声减弱</string>
+    <string name="enable_wind_cancelling">启用风噪减弱</string>
+    <string name="ambient_sound">环境声音</string>
+    <string name="volume">音量：</string>
+    <string name="voice_optimized">关注语音</string>
+    <string name="io_error">IO 错误 (被其他应用占用？没连接？)</string>
+    <string name="headset_not_found">没有找到索尼耳机</string>
+    <string name="set_ambient_successful">已设置环境控制：</string>
+</resources>

@@ -44,4 +44,5 @@
     <string name="headset_not_found">没有找到索尼耳机</string>
     <string name="set_ambient_successful">已设置环境控制：</string>
     <string name="apply_now">现在应用</string>
+    <string name="hint_input_delay_after_connect">蓝牙连接后延时（毫秒）：</string>
 </resources>

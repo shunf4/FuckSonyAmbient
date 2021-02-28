@@ -68,7 +68,7 @@ public final class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 final Handler handler = new Handler(Looper.getMainLooper());
                 handler.postDelayed(() -> {
                     execute(context, device, mode, volume, voice);
-                }, 1000);
+                }, sharedPreferences.getInt(MainActivity.KEY_DELAY_AFTER_CONNECT, 1000));
             }
         }
 

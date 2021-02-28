@@ -22,6 +22,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
 
     EditText listeningMac;
+    EditText delayAfterConnect;
     RadioButton disable;
     RadioButton noiseCancelling;
     RadioButton windCancelling;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Comp
     SwitchCompat voiceOptimized;
 
     public static final String KEY_LISTENING_MAC = "listening_mac";
+    public static final String KEY_DELAY_AFTER_CONNECT = "delay_after_connect";
     public static final String KEY_AMBIENT_MODE = "ambient_mode";
     public static final String KEY_VOLUME = "volume";
     public static final String KEY_VOICE_OPTIMIZED = "voice_optimized";
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Comp
         setContentView(R.layout.activity_main);
 
         listeningMac = findViewById(R.id.input_mac_address_to_listen);
+        delayAfterConnect = findViewById(R.id.input_delay_after_connect);
         disable = findViewById(R.id.radioButtonDisable);
         noiseCancelling = findViewById(R.id.radioButtonNoiseCancelling);
         windCancelling = findViewById(R.id.radioButtonWindCancelling);
@@ -104,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Comp
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         listeningMac.setText(sharedPreferences.getString(KEY_LISTENING_MAC, ""));
+        delayAfterConnect.setText(String.valueOf(sharedPreferences.getInt(KEY_DELAY_AFTER_CONNECT, 1000)));
         int mode = sharedPreferences.getInt(KEY_AMBIENT_MODE, 0);
         switch (mode) {
             case 0: disable.setChecked(true); break;
@@ -118,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Comp
         saveSettings();
 
         listeningMac.addTextChangedListener(this);
+        delayAfterConnect.addTextChangedListener(this);
         disable.setOnCheckedChangeListener(this);
         noiseCancelling.setOnCheckedChangeListener(this);
         windCancelling.setOnCheckedChangeListener(this);
@@ -164,6 +169,12 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Comp
 
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
         editor.putString(KEY_LISTENING_MAC, listeningMac.getText().toString());
+        try {
+            String delayAfterConnectValue = delayAfterConnect.getText().toString();
+            editor.putInt(KEY_DELAY_AFTER_CONNECT, Integer.parseInt(delayAfterConnectValue));
+        } catch (NumberFormatException e) {
+            editor.putInt(KEY_DELAY_AFTER_CONNECT, 1000);
+        }
         editor.putInt(KEY_AMBIENT_MODE, mode);
         editor.putInt(KEY_VOLUME, volume.getProgress());
         editor.putBoolean(KEY_VOICE_OPTIMIZED, voiceOptimized.isChecked());
